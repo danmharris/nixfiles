@@ -73,4 +73,23 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    signing = {
+      key = "17D17AD6334D759997602A43E813BA5D01FAD970";
+      signByDefault = true;
+    };
+    userEmail = "danharris1606@gmail.com";
+    userName = "Dan Harris";
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      line_break = {
+        disabled = true;
+      };
+    };
+  };
 }
