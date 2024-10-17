@@ -74,6 +74,27 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  catppuccin.flavor = "macchiato";
+
+  programs.alacritty = {
+    enable = true;
+    catppuccin.enable = true;
+    settings = {
+      env = {
+        TERM = "xterm-256color";
+      };
+      font = {
+        size = 12.0;
+      };
+      font.normal = {
+        family = "JetBrainsMono NF";
+      };
+      window = {
+        decorations = "full";
+      };
+    };
+  };
+
   programs.git = {
     enable = true;
     signing = {
@@ -91,5 +112,18 @@
         disabled = true;
       };
     };
+  };
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    mouse = true;
+    terminal = "xterm-256color";
+    catppuccin.enable = true;
+    extraConfig = ''
+      set-option -ga terminal-overrides ",xterm-256color:Tc"
+      set-option -g renumber-windows on
+      set -g allow-rename off
+    '';
   };
 }
