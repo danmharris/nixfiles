@@ -16,8 +16,8 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    ripgrep
-    fzf
+    fluxcd
+    kubectl
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
@@ -94,4 +94,7 @@
       set -g allow-rename off
     '';
   };
+
+  programs.fzf.enable = true;
+  programs.ripgrep.enable = true;
 }
