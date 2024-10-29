@@ -95,6 +95,30 @@
     '';
   };
 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    envExtra = ''
+      export N_PREFIX=$HOME/.n
+
+      typeset -U path PATH
+      path=($N_PREFIX/bin $HOME/go/bin $HOME/bin $HOME/.local/bin $path)
+
+      export PATH
+    '';
+    history = {
+      append = true;
+      expireDuplicatesFirst = true;
+      extended = true;
+      ignoreAllDups = true;
+      ignoreDups = true;
+      ignoreSpace = true;
+      share = true;
+    };
+    initExtra = builtins.readFile ./files/init-extra.zsh;
+  };
+
   programs.fzf.enable = true;
   programs.ripgrep.enable = true;
 }
