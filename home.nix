@@ -63,25 +63,6 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.alacritty = {
-    enable = true;
-    catppuccin.enable = true;
-    settings = {
-      env = {
-        TERM = "xterm-256color";
-      };
-      font = {
-        size = 12.0;
-      };
-      font.normal = {
-        family = "JetBrainsMono NF";
-      };
-      window = {
-        decorations = "full";
-      };
-    };
-  };
-
   programs.git = {
     enable = true;
     signing = {
