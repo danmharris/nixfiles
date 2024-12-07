@@ -78,6 +78,8 @@
     userName = "Dan Harris";
   };
 
+  programs.gpg.enable = true;
+
   programs.starship = {
     enable = true;
     settings = {
