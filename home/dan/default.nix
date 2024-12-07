@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dan";
@@ -137,7 +141,7 @@
   };
 
   xdg.configFile."nvim/" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/files/nvim";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/home/dan/files/nvim";
     recursive = true;
   };
 }
