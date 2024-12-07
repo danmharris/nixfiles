@@ -141,7 +141,7 @@
   };
 
   xdg.configFile."nvim/" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/home/dan/files/nvim";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/home/dan/files/nvim";
     recursive = true;
   };
 }

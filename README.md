@@ -16,20 +16,20 @@ experimental-features = nix-command flakes
 Clone this repository into the standard location:
 
 ```
-git clone git@github.com:danmharris/nixfiles.git ~/.config/home-manager
+git clone git@github.com:danmharris/nixfiles.git ~/nixfiles
 ```
 
-Run the home-manager flake to build and activate the config
+For the first run the `home-manager` cli won't be available so you'll need a
+temporary shell:
 
 ```
-nix run home-manager/release-24.05 -- init --switch
+nix shell 'nixpkgs#home-manager'
 ```
 
-From now `home-manager` should be available and further modifications can be
-made with the home-manager cli:
+To apply the config:
 
 ```
-home-manager switch
+home-manager switch --flake ~/nixfiles
 ```
 
 ## Limitations
