@@ -10,7 +10,14 @@
       ./hardware-configuration.nix
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    gc.automatic = true;
+
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
