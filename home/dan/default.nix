@@ -20,7 +20,6 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    asdf-vm
     fluxcd
     kubectl
     neovim
@@ -113,21 +112,11 @@
       ignoreSpace = true;
       share = true;
     };
-    initExtraBeforeCompInit = ''
-      . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
-      fpath=($ASDF_DIR/completions $fpath)
-    '';
     initExtra = builtins.readFile ./files/init-extra.zsh;
   };
 
   programs.fzf.enable = true;
   programs.ripgrep.enable = true;
-
-  home.file = {
-    ".tool-versions".text = ''
-      ruby 3.3.6
-    '';
-  };
 
   xdg.configFile."alacritty/alacritty.toml" = {
     source = ./files/alacritty.toml;
