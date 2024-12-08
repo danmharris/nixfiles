@@ -16,6 +16,13 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+      nixosConfigurations."pomelo" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/pomelo/configuration.nix
+        ];
+      };
+
       homeConfigurations."dan" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
