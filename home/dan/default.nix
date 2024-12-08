@@ -53,6 +53,7 @@
 
   fonts.fontconfig.enable = true;
 
+  programs.direnv.enable = true;
   programs.git = {
     enable = true;
     signing = {
