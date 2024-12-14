@@ -11,36 +11,42 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, catppuccin, ... }:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      nixosConfigurations."pomelo" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/pomelo/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.dan.imports = [
-              ./home/dan
-              ./hosts/pomelo/home.nix
-            ];
-            home-manager.extraSpecialArgs = { inherit inputs; };
-          }
-        ];
-      };
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    catppuccin,
+    ...
+  }: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-      homeConfigurations."dan" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        extraSpecialArgs = { inherit inputs; };
-
-        modules = [
-          ./home/dan
-        ];
-      };
+    nixosConfigurations."pomelo" = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/pomelo/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.dan.imports = [
+            ./home/dan
+            ./hosts/pomelo/home.nix
+          ];
+          home-manager.extraSpecialArgs = {inherit inputs;};
+        }
+      ];
     };
+
+    homeConfigurations."dan" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
+      extraSpecialArgs = {inherit inputs;};
+
+      modules = [
+        ./home/dan
+      ];
+    };
+  };
 }

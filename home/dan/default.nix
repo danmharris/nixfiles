@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
   ];
@@ -21,7 +24,7 @@
 
   home.packages = with pkgs; [
     neovim
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
 
   # Home Manager can also manage your environment variables through
@@ -122,12 +125,14 @@
   };
 
   xdg.configFile."alacritty/catppuccin-macchiato.toml" = {
-    source = pkgs.fetchFromGitHub {
-      owner = "catppuccin";
-      repo = "alacritty";
-      rev = "f6cb5a5c2b404cdaceaff193b9c52317f62c62f7";
-      hash = "sha256-H8bouVCS46h0DgQ+oYY8JitahQDj0V9p2cOoD4cQX+Q=";
-    } + "/catppuccin-macchiato.toml";
+    source =
+      pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo = "alacritty";
+        rev = "f6cb5a5c2b404cdaceaff193b9c52317f62c62f7";
+        hash = "sha256-H8bouVCS46h0DgQ+oYY8JitahQDj0V9p2cOoD4cQX+Q=";
+      }
+      + "/catppuccin-macchiato.toml";
   };
 
   xdg.configFile."nvim/" = {
