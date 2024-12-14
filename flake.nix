@@ -24,7 +24,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.dan.imports = [ ./home/dan ];
+            home-manager.users.dan.imports = [
+              ./home/dan
+              ./hosts/pomelo/home.nix
+            ];
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];

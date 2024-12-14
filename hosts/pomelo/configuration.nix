@@ -94,12 +94,6 @@
     isNormalUser = true;
     description = "Dan Harris";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      spotify
-      discord
-      alacritty
-      mumble
-    ];
     shell = pkgs.zsh;
   };
 
