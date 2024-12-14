@@ -6,6 +6,3 @@ c() {
     fi
     tmux new-session -A -c $dir -s $(basename $dir)
 }
-
-. <(kubectl completion zsh)
-. <(flux completion zsh)

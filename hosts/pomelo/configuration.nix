@@ -99,9 +99,6 @@
       discord
       alacritty
       mumble
-      git-remote-gcrypt
-      beancount
-      fava
     ];
     shell = pkgs.zsh;
   };

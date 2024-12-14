@@ -20,8 +20,6 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    fluxcd
-    kubectl
     neovim
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
