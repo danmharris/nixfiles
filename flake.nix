@@ -20,6 +20,13 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/pomelo/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.dan.imports = [ ./home/dan ];
+            home-manager.extraSpecialArgs = { inherit inputs; };
+          }
         ];
       };
 
