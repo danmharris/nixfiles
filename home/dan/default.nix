@@ -50,7 +50,10 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  catppuccin.flavor = "macchiato";
+  catppuccin = {
+    flavor = "macchiato";
+    tmux.enable = true;
+  };
 
   fonts.fontconfig.enable = true;
 
@@ -85,7 +88,6 @@
     baseIndex = 1;
     mouse = true;
     terminal = "xterm-256color";
-    catppuccin.enable = true;
     extraConfig = ''
       set-option -ga terminal-overrides ",xterm-256color:Tc"
       set-option -g renumber-windows on
