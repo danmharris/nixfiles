@@ -12,7 +12,8 @@ set("n", "<leader>wl", "<C-w>l", { desc = "Move window right" })
 
 set("n", "<leader>or", function() require("telescope.builtin").oldfiles() end, { desc = "Open recent files" })
 set("n", "<leader>of", function() require("telescope.builtin").find_files() end, { desc = "Open files" })
-set("n", "<leader>ob", function() require("telescope.builtin").buffers() end, { desc = "Open buffers" })
+set("n", "<leader>ob", function() require("telescope.builtin").buffers({ sort_mru = true }) end,
+    { desc = "Open buffers" })
 
 set("n", "<C-f>", function() require("telescope.builtin").live_grep() end, { desc = "Grep" })
 
