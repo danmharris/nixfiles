@@ -24,16 +24,9 @@
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     nixosConfigurations."pomelo" = lib.mkNixosSystem {
-      modules =
-        [
-          ./hosts/pomelo/configuration.nix
-        ]
-        ++ lib.mkNixosHomeManager {
-          username = "dan";
-          homeManagerModules = [
-            ./hosts/pomelo/home.nix
-          ];
-        };
+      modules = [
+        ./hosts/pomelo/configuration.nix
+      ];
     };
 
     homeConfigurations."dan" = lib.mkHomeManager {

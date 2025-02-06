@@ -4,10 +4,11 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
+    inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
   ];
 
@@ -98,6 +99,16 @@
     description = "Dan Harris";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.dan.imports = [
+      ../../home/dan
+      ./home.nix
+    ];
+    extraSpecialArgs = {inherit inputs;};
   };
 
   programs = {
