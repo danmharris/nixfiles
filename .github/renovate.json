@@ -1,0 +1,29 @@
+{
+    "extends": [
+        "config:recommended",
+        ":semanticCommits",
+        "helpers:pinGitHubActionDigests"
+    ],
+    "nix": {
+        "enabled": true
+    },
+    "lockFileMaintenance": {
+        "enabled": true,
+        "schedule": ["before 4am on sunday"]
+    },
+    "packageRules": [
+        {
+            "matchDepTypes": ["action"],
+            "matchUpdateTypes": ["minor", "patch"],
+            "automerge": true,
+            "automergeType": "branch",
+            "ignoreTests": true
+        },
+        {
+            "matchUpdateTypes": ["lockFileMaintenance"],
+            "automerge": true,
+            "automergeType": "branch",
+            "ignoreTests": true
+        }
+    ]
+}
