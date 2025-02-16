@@ -29,6 +29,12 @@
       ];
     };
 
+    nixosConfigurations."guava" = lib.mkNixosSystem {
+      modules = [
+        ./hosts/guava/configuration.nix
+      ];
+    };
+
     homeConfigurations."dan" = lib.mkHomeManager {
       inherit pkgs;
       username = "dan";
