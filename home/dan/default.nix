@@ -53,6 +53,7 @@
   catppuccin = {
     flavor = "macchiato";
     tmux.enable = true;
+    alacritty.enable = true;
   };
 
   fonts.fontconfig.enable = true;
@@ -122,19 +123,20 @@
   programs.fzf.enable = true;
   programs.ripgrep.enable = true;
 
-  xdg.configFile."alacritty/alacritty.toml" = {
-    source = ./files/alacritty.toml;
-  };
-
-  xdg.configFile."alacritty/catppuccin-macchiato.toml" = {
-    source =
-      pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "alacritty";
-        rev = "f6cb5a5c2b404cdaceaff193b9c52317f62c62f7";
-        hash = "sha256-H8bouVCS46h0DgQ+oYY8JitahQDj0V9p2cOoD4cQX+Q=";
-      }
-      + "/catppuccin-macchiato.toml";
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      env = {
+        TERM = "xterm-256color";
+      };
+      font = {
+        size = 12.0;
+        normal.family = "JetBrainsMono NF";
+      };
+      window = {
+        decorations = "full";
+      };
+    };
   };
 
   xdg.configFile."nvim/" = {
