@@ -65,7 +65,12 @@
   console.keyMap = "uk";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-brother-hll2350dw
+    ];
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
