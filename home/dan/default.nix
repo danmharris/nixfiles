@@ -139,6 +139,15 @@
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "catppuccin-macchiato";
+      font-size = 12;
+    };
+  };
+
   xdg.configFile."nvim/" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/home/dan/files/nvim";
     recursive = true;
