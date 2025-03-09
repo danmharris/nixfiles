@@ -16,28 +16,50 @@
     home-manager,
     catppuccin,
     ...
-  }: let
-    lib = import ./lib {inherit inputs;};
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  }: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-    nixosConfigurations."pomelo" = lib.mkNixosSystem {
-      modules = [
-        ./hosts/pomelo/configuration.nix
-      ];
+    nixosConfigurations = let
+      mkNixosConfig = {
+        hostname,
+        modules ? [],
+        baseModules ? [
+          home-manager.nixosModules.home-manager
+          ./hosts/${hostname}
+        ],
+      }:
+        nixpkgs.lib.nixosSystem {
+          modules = baseModules ++ modules;
+          specialArgs = {inherit inputs;};
+        };
+    in {
+      "pomelo" = mkNixosConfig {
+        hostname = "pomelo";
+      };
+
+      "guava" = mkNixosConfig {
+        hostname = "guava";
+      };
     };
 
-    nixosConfigurations."guava" = lib.mkNixosSystem {
-      modules = [
-        ./hosts/guava/configuration.nix
-      ];
-    };
+    homeConfigurations = let
+      mkHomeManagerConfig = {
+        username,
+        system ? "x86_64-linux",
+      }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
 
-    homeConfigurations."dan" = lib.mkHomeManager {
-      inherit pkgs;
-      username = "dan";
+          extraSpecialArgs = {inherit inputs;};
+
+          modules = [
+            ./home/${username}
+          ];
+        };
+    in {
+      "dan" = mkHomeManagerConfig {
+        username = "dan";
+      };
     };
   };
 }
