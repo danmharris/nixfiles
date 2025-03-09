@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../_modules/base.nix
   ];
 
   networking.hostName = "pomelo"; # Define your hostname.

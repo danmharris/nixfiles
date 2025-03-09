@@ -25,6 +25,7 @@
         modules ? [],
         baseModules ? [
           home-manager.nixosModules.home-manager
+          ./roles/common.nix
           ./hosts/${hostname}
         ],
       }:
@@ -35,10 +36,12 @@
     in {
       "pomelo" = mkNixosConfig {
         hostname = "pomelo";
+        modules = [ ./roles/desktop.nix ];
       };
 
       "guava" = mkNixosConfig {
         hostname = "guava";
+        modules = [ ./roles/desktop.nix ];
       };
     };
 
