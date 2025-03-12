@@ -1,6 +1,6 @@
-{ nixpkgs, ... }: {
-    imports = [
-      ./gnome.nix
-      ./gaming.nix
-    ];
+{nixpkgs, ...}: {
+  imports = [
+    ./gnome.nix
+    ./gaming.nix
+  ];
 }

@@ -36,12 +36,12 @@
     in {
       "pomelo" = mkNixosConfig {
         hostname = "pomelo";
-        modules = [ ./roles/desktop.nix ];
+        modules = [./roles/desktop.nix];
       };
 
       "guava" = mkNixosConfig {
         hostname = "guava";
-        modules = [ ./roles/desktop.nix ];
+        modules = [./roles/desktop.nix];
       };
     };
 
