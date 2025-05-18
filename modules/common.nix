@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }: {
@@ -14,6 +15,16 @@
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
     };
+  };
+
+  system.activationScripts.diff = ''
+    PATH=$PATH:${lib.makeBinPath [pkgs.nvd pkgs.nix]}
+    nvd diff $(ls -dv /nix/var/nix/profiles/system-*-link | tail -2)
+  '';
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:danmharris/nixfiles";
   };
 
   # Bootloader.
@@ -80,6 +91,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    nvd
     vim
     wget
   ];
