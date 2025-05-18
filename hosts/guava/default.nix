@@ -6,6 +6,11 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+
+    ../../modules/gnome.nix
+    ../../modules/dev-terminal.nix
+    ../../modules/gaming.nix
+    ../../modules/chat.nix
   ];
 
   networking.hostName = "guava"; # Define your hostname.
