@@ -17,6 +17,10 @@ return {
                     end
                 }
             })
+
+            require("lspconfig").nil_ls.setup({
+                capabilities = capabilities,
+            })
         end,
     },
     { "hrsh7th/cmp-nvim-lsp" },

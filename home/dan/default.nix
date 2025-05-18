@@ -24,6 +24,7 @@
 
   home.packages = with pkgs; [
     neovim
+    nil
     (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
 
