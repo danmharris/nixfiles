@@ -1,6 +1,6 @@
 return {
     { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
+    { "williamboman/mason-lspconfig.nvim", version = "1.32.0" },
     {
         "neovim/nvim-lspconfig",
         config = function()
