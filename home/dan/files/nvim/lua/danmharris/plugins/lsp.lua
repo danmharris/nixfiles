@@ -20,6 +20,13 @@ return {
 
             require("lspconfig").nil_ls.setup({
                 capabilities = capabilities,
+                settings = {
+                    ["nil"] = {
+                        formatting = {
+                            command = { "alejandra" },
+                        },
+                    },
+                },
             })
         end,
     },
