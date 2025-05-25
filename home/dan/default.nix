@@ -26,7 +26,7 @@
     alejandra
     neovim
     nil
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
+    nerd-fonts.jetbrains-mono
   ];
 
   # Home Manager can also manage your environment variables through
@@ -79,7 +79,7 @@
   programs.gpg.enable = true;
   services.gpg-agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentry.package = pkgs.pinentry-curses;
   };
 
   programs.starship = {
@@ -124,7 +124,7 @@
       ignoreSpace = true;
       share = true;
     };
-    initExtra = builtins.readFile ./files/init-extra.zsh;
+    initContent = builtins.readFile ./files/init-extra.zsh;
   };
 
   programs.fzf.enable = true;
