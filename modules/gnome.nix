@@ -36,6 +36,9 @@
   users.users.dan = {
     packages = with pkgs; [
       spotify
+      libreoffice
+      hunspell
+      hunspellDicts.en_GB-ise
     ];
   };
 
