@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  inputs,
   ...
 }: {
   nix = {
@@ -72,12 +71,6 @@
     description = "Dan Harris";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
   };
 
   programs = {

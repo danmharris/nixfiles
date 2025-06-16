@@ -22,15 +22,35 @@
     nixosConfigurations = let
       mkNixosConfig = {
         hostname,
+        username ? "dan",
         modules ? [],
         baseModules ? [
           home-manager.nixosModules.home-manager
           ./modules/common.nix
           ./hosts/${hostname}
         ],
-      }:
+      }: let
+        mkHomes = [
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;};
+
+              sharedModules = [
+                catppuccin.homeModules.catppuccin
+                ./home/modules
+              ];
+
+              users.${username}.imports = [
+                ./home/${username}
+              ];
+            };
+          }
+        ];
+      in
         nixpkgs.lib.nixosSystem {
-          modules = baseModules ++ modules;
+          modules = baseModules ++ modules ++ mkHomes;
           specialArgs = {inherit inputs;};
         };
     in {
@@ -54,6 +74,9 @@
           extraSpecialArgs = {inherit inputs;};
 
           modules = [
+            catppuccin.homeModules.catppuccin
+            ./home/modules
+
             ./home/${username}
           ];
         };

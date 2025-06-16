@@ -1,14 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
-  imports = [
-    inputs.catppuccin.homeModules.catppuccin
-    ../modules
-  ];
-
+{pkgs, ...}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dan";
