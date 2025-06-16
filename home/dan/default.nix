@@ -6,6 +6,7 @@
 }: {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
+    ../modules
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -24,9 +25,6 @@
 
   home.packages = with pkgs; [
     alejandra
-    neovim
-    nil
-    nerd-fonts.jetbrains-mono
   ];
 
   # Home Manager can also manage your environment variables through
@@ -45,17 +43,11 @@
   #
   #  /etc/profiles/per-user/dan/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   catppuccin = {
     flavor = "macchiato";
-    tmux.enable = true;
-    alacritty.enable = true;
   };
 
   fonts.fontconfig.enable = true;
@@ -66,97 +58,13 @@
     nix-direnv.enable = true;
   };
 
-  programs.git = {
-    enable = true;
-    signing = {
-      key = "17D17AD6334D759997602A43E813BA5D01FAD970";
-      signByDefault = true;
-    };
-    userEmail = "danharris1606@gmail.com";
-    userName = "Dan Harris";
-  };
-
-  programs.gpg.enable = true;
-  services.gpg-agent = {
-    enable = true;
-    pinentry.package = pkgs.pinentry-curses;
-  };
-
-  programs.starship = {
-    enable = true;
-    settings = {
-      line_break = {
-        disabled = true;
-      };
-    };
-  };
-
-  programs.tmux = {
-    enable = true;
-    baseIndex = 1;
-    mouse = true;
-    terminal = "xterm-256color";
-    extraConfig = ''
-      set-option -ga terminal-overrides ",xterm-256color:Tc"
-      set-option -g renumber-windows on
-      set -g allow-rename off
-    '';
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    envExtra = ''
-      export N_PREFIX=$HOME/.n
-
-      typeset -U path PATH
-      path=($N_PREFIX/bin $HOME/go/bin $HOME/bin $HOME/.local/bin $path)
-
-      export PATH
-    '';
-    history = {
-      append = true;
-      expireDuplicatesFirst = true;
-      extended = true;
-      ignoreAllDups = true;
-      ignoreDups = true;
-      ignoreSpace = true;
-      share = true;
-    };
-    initContent = builtins.readFile ./files/init-extra.zsh;
-  };
-
-  programs.fzf.enable = true;
-  programs.ripgrep.enable = true;
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      env = {
-        TERM = "xterm-256color";
-      };
-      font = {
-        size = 12.0;
-        normal.family = "JetBrainsMono NF";
-      };
-      window = {
-        decorations = "full";
-      };
-    };
-  };
-
-  programs.ghostty = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      theme = "catppuccin-macchiato";
-      font-size = 12;
-    };
-  };
-
-  xdg.configFile."nvim/" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixfiles/home/dan/files/nvim";
-    recursive = true;
+  myHome = {
+    alacritty.enable = true;
+    ghostty.enable = true;
+    git.enable = true;
+    gpg.enable = true;
+    nvim.enable = true;
+    tmux.enable = true;
+    zsh.enable = true;
   };
 }
