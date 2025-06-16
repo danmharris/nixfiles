@@ -4,6 +4,8 @@
   ...
 }: {
   imports = [
+    ./_base
+
     ./alacritty
     ./ghostty
     ./git
