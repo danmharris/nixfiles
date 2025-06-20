@@ -26,6 +26,7 @@
         modules ? [],
         baseModules ? [
           home-manager.nixosModules.home-manager
+          ./nixos/modules
           ./nixos/modules/common.nix
           ./nixos/hosts/${hostname}
         ],

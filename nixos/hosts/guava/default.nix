@@ -8,11 +8,19 @@
     ./hardware-configuration.nix
 
     ../../modules/gnome.nix
-    ../../modules/gaming.nix
     ../../modules/chat.nix
   ];
 
   networking.hostName = "guava"; # Define your hostname.
+
+  mySystem = {
+    printing.enable = true;
+    steam.enable = true;
+  };
+
+  users.users.dan.packages = with pkgs; [
+    prismlauncher
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
