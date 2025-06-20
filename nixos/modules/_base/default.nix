@@ -69,7 +69,7 @@
   users.users.dan = {
     isNormalUser = true;
     description = "Dan Harris";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["wheel"];
     shell = pkgs.zsh;
   };
 

@@ -6,14 +6,12 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-
-    ../../modules/gnome.nix
-    ../../modules/chat.nix
   ];
 
   networking.hostName = "pomelo"; # Define your hostname.
 
   mySystem = {
+    gnome.enable = true;
     printing.enable = true;
     steam.enable = true;
   };

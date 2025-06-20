@@ -15,6 +15,12 @@
 
   home.packages = with pkgs; [
     alejandra
+    spotify
+    libreoffice
+    hunspell
+    hunspellDicts.en_GB-ise
+    discord
+    mumble
   ];
 
   programs.direnv = {
@@ -22,6 +28,8 @@
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+
+  programs.firefox.enable = true;
 
   myHome = {
     alacritty.enable = true;
