@@ -26,8 +26,8 @@
         modules ? [],
         baseModules ? [
           home-manager.nixosModules.home-manager
-          ./modules/common.nix
-          ./hosts/${hostname}
+          ./nixos/modules/common.nix
+          ./nixos/hosts/${hostname}
         ],
       }: let
         mkHomes = [
