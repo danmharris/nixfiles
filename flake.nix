@@ -5,31 +5,41 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     catppuccin.url = "github:catppuccin/nix";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs @ {nixpkgs, ...}: let
+  outputs = inputs @ {flake-parts, ...}: let
     lib = import ./lib.nix {inherit inputs;};
-  in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [
+        "x86_64-linux"
+      ];
 
-    nixosConfigurations = {
-      "pomelo" = lib.mkNixosConfig {
-        hostname = "pomelo";
+      perSystem = {pkgs, ...}: {
+        formatter = pkgs.alejandra;
       };
 
-      "guava" = lib.mkNixosConfig {
-        hostname = "guava";
+      flake = {
+        nixosConfigurations = {
+          "pomelo" = lib.mkNixosConfig {
+            hostname = "pomelo";
+          };
+
+          "guava" = lib.mkNixosConfig {
+            hostname = "guava";
+          };
+        };
+
+        homeConfigurations = {
+          "dan" = lib.mkHomeManagerConfig {
+            username = "dan";
+          };
+        };
       };
     };
-
-    homeConfigurations = {
-      "dan" = lib.mkHomeManagerConfig {
-        username = "dan";
-      };
-    };
-  };
 }
