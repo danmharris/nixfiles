@@ -11,77 +11,23 @@
     };
   };
 
-  outputs = inputs @ {
-    nixpkgs,
-    home-manager,
-    catppuccin,
-    ...
-  }: {
+  outputs = inputs @ {nixpkgs, ...}: let
+    lib = import ./lib.nix {inherit inputs;};
+  in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-    nixosConfigurations = let
-      mkNixosConfig = {
-        hostname,
-        username ? "dan",
-        modules ? [],
-        baseModules ? [
-          home-manager.nixosModules.home-manager
-          ./nixos/modules
-          ./nixos/hosts/${hostname}
-        ],
-      }: let
-        mkHomes = [
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {inherit inputs;};
-
-              sharedModules = [
-                catppuccin.homeModules.catppuccin
-                ./home/modules
-              ];
-
-              users.${username}.imports = [
-                ./home/${username}
-              ];
-            };
-          }
-        ];
-      in
-        nixpkgs.lib.nixosSystem {
-          modules = baseModules ++ modules ++ mkHomes;
-          specialArgs = {inherit inputs;};
-        };
-    in {
-      "pomelo" = mkNixosConfig {
+    nixosConfigurations = {
+      "pomelo" = lib.mkNixosConfig {
         hostname = "pomelo";
       };
 
-      "guava" = mkNixosConfig {
+      "guava" = lib.mkNixosConfig {
         hostname = "guava";
       };
     };
 
-    homeConfigurations = let
-      mkHomeManagerConfig = {
-        username,
-        system ? "x86_64-linux",
-      }:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-
-          extraSpecialArgs = {inherit inputs;};
-
-          modules = [
-            catppuccin.homeModules.catppuccin
-            ./home/modules
-
-            ./home/${username}
-          ];
-        };
-    in {
-      "dan" = mkHomeManagerConfig {
+    homeConfigurations = {
+      "dan" = lib.mkHomeManagerConfig {
         username = "dan";
       };
     };
