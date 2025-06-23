@@ -45,12 +45,6 @@
             hostname = "guava";
           };
         };
-
-        homeConfigurations = {
-          "dan" = lib.mkHomeManagerConfig {
-            username = "dan";
-          };
-        };
       };
     };
 }

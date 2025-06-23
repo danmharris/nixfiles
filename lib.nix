@@ -15,7 +15,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit inputs;};
+          extraSpecialArgs = {inherit inputs hostname;};
 
           sharedModules = [
             inputs.catppuccin.homeModules.catppuccin
@@ -32,22 +32,5 @@
     inputs.nixpkgs.lib.nixosSystem {
       modules = baseModules ++ modules ++ mkHomes;
       specialArgs = {inherit inputs;};
-    };
-
-  mkHomeManagerConfig = {
-    username,
-    system ? "x86_64-linux",
-  }:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-
-      extraSpecialArgs = {inherit inputs;};
-
-      modules = [
-        inputs.catppuccin.homeModules.catppuccin
-        ./home/modules
-
-        ./home/${username}
-      ];
     };
 }
