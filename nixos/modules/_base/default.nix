@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -25,6 +26,8 @@
     enable = true;
     flake = "github:danmharris/nixfiles";
   };
+
+  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -65,12 +68,17 @@
 
   powerManagement.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  sops.secrets.dan-password = {
+    sopsFile = ./secrets.sops.yml;
+    neededForUsers = true;
+  };
+
   users.users.dan = {
     isNormalUser = true;
     description = "Dan Harris";
     extraGroups = ["wheel"];
     shell = pkgs.zsh;
+    hashedPasswordFile = config.sops.secrets.dan-password.path;
   };
 
   programs = {

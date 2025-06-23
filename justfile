@@ -6,3 +6,6 @@ build:
 
 switch:
   sudo nixos-rebuild build --flake .
+
+sops-updatekeys:
+  find -type f -name '*.sops.yml' -exec sops updatekeys {} \;

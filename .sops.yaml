@@ -1,0 +1,12 @@
+---
+keys:
+  - &dan age162k3jv9wyce4dkly60tu0l9jmme5qa3fmcrknrz6lx54ru2ftgaqcsy5e2
+  - &guava age1xuwlyavt70tt7rc0ufrwh7h907ymvg5mt7amxy0pygafmtm7eses2yj69x
+  - &lumia age1ued9ufgfwkrx00n3vmneae6grex4r0nuuytnwdk63u62flga4u5s9kd20j
+creation_rules:
+  - path_regex: .*\.sops\.ya?ml$
+    key_groups:
+      - age:
+          - *dan
+          - *guava
+          - *lumia
