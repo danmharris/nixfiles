@@ -8,8 +8,6 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "guava"; # Define your hostname.
-
   mySystem = {
     gnome.enable = true;
     printing.enable = true;

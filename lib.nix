@@ -31,6 +31,6 @@
   in
     inputs.nixpkgs.lib.nixosSystem {
       modules = baseModules ++ modules ++ mkHomes;
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs hostname;};
     };
 }

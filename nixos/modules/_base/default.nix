@@ -2,8 +2,11 @@
   config,
   pkgs,
   lib,
+  hostname,
   ...
 }: {
+  networking.hostName = hostname;
+
   nix = {
     gc = {
       automatic = true;
