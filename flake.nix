@@ -14,6 +14,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = inputs @ {flake-parts, ...}: let
