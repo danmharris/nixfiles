@@ -48,6 +48,10 @@
           "guava" = lib.mkNixosConfig {
             hostname = "guava";
           };
+
+          lumia = lib.mkNixosConfig {
+            hostname = "lumia";
+          };
         };
       };
     };
