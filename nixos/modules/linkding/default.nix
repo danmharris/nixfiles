@@ -54,10 +54,7 @@ in {
       ];
     };
 
-    services.restic.backups.linkding = {
-      repository = "/mnt/restic/linkding";
-      initialize = true;
-      passwordFile = config.sops.secrets."services/restic/password".path;
+    mySystem.restic.backups.linkding = {
       paths = [
         "/var/lib/linkding/backup.zip"
       ];
@@ -67,16 +64,6 @@ in {
       backupCleanupCommand = ''
         rm -f /var/lib/linkding/backup.zip
       '';
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-        RandomizedDelaySec = "30m";
-      };
-      pruneOpts = [
-        "--keep-daily 7"
-        "--keep-weekly 4"
-        "--keep-monthly 3"
-      ];
     };
   };
 }

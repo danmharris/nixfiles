@@ -34,22 +34,9 @@ in {
       ];
     };
 
-    services.restic.backups.immich = {
-      repository = "/mnt/restic/immich";
-      initialize = true;
-      passwordFile = config.sops.secrets."services/restic/password".path;
+    mySystem.restic.backups.immich = {
       paths = [
         config.services.immich.mediaLocation
-      ];
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-        RandomizedDelaySec = "30m";
-      };
-      pruneOpts = [
-        "--keep-daily 7"
-        "--keep-weekly 4"
-        "--keep-monthly 3"
       ];
     };
   };
