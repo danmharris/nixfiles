@@ -17,7 +17,11 @@
     impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = inputs @ {flake-parts, ...}: let
+  outputs = inputs @ {
+    nixpkgs,
+    flake-parts,
+    ...
+  }: let
     lib = import ./lib.nix {inherit inputs;};
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -41,11 +45,19 @@
 
       flake = {
         nixosConfigurations = {
-          "pomelo" = lib.mkNixosConfig {
+          iso = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+              ./nixos/hosts/iso.nix
+            ];
+          };
+
+          pomelo = lib.mkNixosConfig {
             hostname = "pomelo";
           };
 
-          "guava" = lib.mkNixosConfig {
+          guava = lib.mkNixosConfig {
             hostname = "guava";
           };
 
