@@ -14,6 +14,7 @@
     acme.enable = true;
     glances.enable = true;
     immich.enable = true;
+    jellyfin.enable = true;
     linkding.enable = true;
     restic.enable = true;
     impermanence.enable = true;

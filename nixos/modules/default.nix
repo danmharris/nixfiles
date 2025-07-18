@@ -9,6 +9,7 @@
     ./gnome
     ./immich
     ./impermanence
+    ./jellyfin
     ./linkding
     ./podman
     ./postgresql
