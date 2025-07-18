@@ -15,5 +15,6 @@
     ./printing
     ./restic
     ./steam
+    ./unifi
   ];
 }
