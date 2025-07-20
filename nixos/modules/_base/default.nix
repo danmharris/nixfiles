@@ -5,7 +5,10 @@
   hostname,
   ...
 }: {
-  networking.hostName = hostname;
+  networking = {
+    domain = "dnhrrs.xyz";
+    hostName = hostname;
+  };
 
   nix = {
     gc = {
