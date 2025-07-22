@@ -11,6 +11,7 @@
     ./impermanence
     ./jellyfin
     ./linkding
+    ./nas
     ./podman
     ./postgresql
     ./printing

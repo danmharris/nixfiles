@@ -8,16 +8,9 @@ in {
   options.mySystem.jellyfin.enable = lib.mkEnableOption "jellyfin";
 
   config = lib.mkIf (cfg.enable) {
-    fileSystems = {
-      "/mnt/media/movies" = {
-        device = "nas.dnhrrs.xyz:/volume1/Movies";
-        fsType = "nfs";
-      };
-
-      "/mnt/media/tv" = {
-        device = "nas.dnhrrs.xyz:/volume1/TV Shows";
-        fsType = "nfs";
-      };
+    mySystem.nas.mounts.media = {
+      enable = true;
+      groupExtraUsers = [config.services.jellyfin.user];
     };
 
     services.jellyfin = {
