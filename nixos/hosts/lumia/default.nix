@@ -10,6 +10,34 @@
 
   powerManagement.powertop.enable = true;
 
+  networking.useDHCP = false;
+  systemd.network = {
+    enable = true;
+    netdevs = {
+      "10-vlan30" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan30";
+        };
+        vlanConfig.Id = 30;
+      };
+    };
+
+    networks = {
+      "10-enp2s0" = {
+        matchConfig.Name = "enp2s0";
+        networkConfig.DHCP = true;
+        vlan = [
+          "vlan30"
+        ];
+      };
+      "20-vlan30" = {
+        matchConfig.Name = "vlan30";
+        networkConfig.DHCP = true;
+      };
+    };
+  };
+
   mySystem = {
     acme.enable = true;
     glances.enable = true;
