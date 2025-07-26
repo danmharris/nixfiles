@@ -53,6 +53,10 @@
             ];
           };
 
+          cherry = lib.mkNixosConfig {
+            hostname = "cherry";
+          };
+
           pomelo = lib.mkNixosConfig {
             hostname = "pomelo";
           };

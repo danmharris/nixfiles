@@ -1,6 +1,7 @@
 ---
 keys:
   - &dan age162k3jv9wyce4dkly60tu0l9jmme5qa3fmcrknrz6lx54ru2ftgaqcsy5e2
+  - &cherry age10ja28r58wftqjg6ps4vydx6wk5vyqpth8pwzpdcrk889e2hltseqx4af72
   - &guava age1xuwlyavt70tt7rc0ufrwh7h907ymvg5mt7amxy0pygafmtm7eses2yj69x
   - &lumia age1ued9ufgfwkrx00n3vmneae6grex4r0nuuytnwdk63u62flga4u5s9kd20j
 creation_rules:
@@ -8,5 +9,6 @@ creation_rules:
     key_groups:
       - age:
           - *dan
+          - *cherry
           - *guava
           - *lumia
