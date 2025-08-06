@@ -52,6 +52,7 @@ in {
       ];
     };
 
+    mySystem.postgresql.backupDatabases = ["paperless"];
     mySystem.restic.backups.paperless = {
       paths = [
         config.services.paperless.dataDir
