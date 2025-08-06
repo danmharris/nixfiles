@@ -25,4 +25,14 @@
     tmux.enable = true;
     zsh.enable = true;
   };
+
+  programs.ssh.enable = true;
+  programs.ssh.matchBlocks.cisco = {
+    host = "switch0.dnhrrs.xyz";
+    user = "cisco";
+    extraOptions = {
+      KexAlgorithms = "+diffie-hellman-group-exchange-sha1";
+      HostKeyAlgorithms = "+ssh-rsa";
+    };
+  };
 }
