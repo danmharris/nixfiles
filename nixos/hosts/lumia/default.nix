@@ -48,6 +48,7 @@
     impermanence.enable = true;
     cryptroot.enable = true;
     unifi.enable = true;
+    paperless.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

@@ -12,6 +12,7 @@
     ./jellyfin
     ./linkding
     ./nas
+    ./paperless
     ./podman
     ./postgresql
     ./printing

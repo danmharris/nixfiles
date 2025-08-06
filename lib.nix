@@ -29,9 +29,10 @@
         };
       }
     ];
+    pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
   in
     inputs.nixpkgs.lib.nixosSystem {
       modules = baseModules ++ modules ++ mkHomes;
-      specialArgs = {inherit inputs hostname;};
+      specialArgs = {inherit inputs hostname pkgs-unstable;};
     };
 }
