@@ -35,6 +35,7 @@
     device = "/dev/disk/by-uuid/1db86dd7-21ee-4780-8b2f-f8d50beee2cb";
     fsType = "btrfs";
     options = ["subvol=persist" "compress=zstd"];
+    neededForBoot = true;
   };
 
   fileSystems."/swap" = {
