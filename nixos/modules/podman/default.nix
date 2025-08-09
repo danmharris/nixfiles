@@ -26,7 +26,7 @@ in {
 
     users.users.dan.extraGroups = ["poddy"];
 
-    environment.persistence."/nix/persist" = lib.mkIf (config.mySystem.impermanence.enable) {
+    environment.persistence."/persist" = lib.mkIf (config.mySystem.impermanence.enable) {
       directories = [
         "/var/lib/containers"
       ];

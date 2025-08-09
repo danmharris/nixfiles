@@ -16,7 +16,7 @@ in {
         port = 2222;
         shell = "/bin/cryptsetup-askpass";
         authorizedKeys = config.users.users.dan.openssh.authorizedKeys.keys;
-        hostKeys = ["/nix/persist/initrd/ssh_host_ed25519_key"];
+        hostKeys = ["/persist/initrd/ssh_host_ed25519_key"];
       };
     };
   };
