@@ -50,6 +50,12 @@
     options = ["subvol=snapshots"];
   };
 
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/E84E-F45A";
+    fsType = "vfat";
+    options = ["fmask=0022" "dmask=0022"];
+  };
+
   swapDevices = [{device = "/swap/swapfile";}];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
