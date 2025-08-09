@@ -2,8 +2,11 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   environment.systemPackages = with pkgs; [
+    btrfs-progs
     ssh-to-age
   ];
+
+  services.openssh.ports = [2422];
 
   users.users.nixos = {
     openssh.authorizedKeys.keys = [
