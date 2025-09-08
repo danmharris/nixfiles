@@ -14,6 +14,7 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["dm-snapshot" "amdgpu"];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
