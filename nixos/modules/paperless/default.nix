@@ -5,6 +5,17 @@
   ...
 }: let
   cfg = config.mySystem.paperless;
+  pkg = pkgs-unstable.paperless-ngx.overrideAttrs (finalAttrs: previousAttrs: {
+    passthru =
+      previousAttrs.passthru
+      // {
+        nltkData = with pkgs-unstable.nltk-data; [
+          punkt-tab
+          snowball-data
+          stopwords
+        ];
+      };
+  });
 in {
   options.mySystem.paperless.enable = lib.mkEnableOption "paperless";
 
@@ -20,7 +31,7 @@ in {
 
     services.paperless = {
       enable = true;
-      package = pkgs-unstable.paperless-ngx;
+      package = pkg;
       database.createLocally = true;
       settings = {
         PAPERLESS_URL = "https://paperless.dnhrrs.xyz";
