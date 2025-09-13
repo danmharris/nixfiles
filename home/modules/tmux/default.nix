@@ -14,9 +14,10 @@ in {
       enable = true;
       baseIndex = 1;
       mouse = true;
-      terminal = "xterm-256color";
+      terminal = "tmux-256color";
+      escapeTime = 10;
+      focusEvents = true;
       extraConfig = ''
-        set-option -ga terminal-overrides ",xterm-256color:Tc"
         set-option -g renumber-windows on
         set -g allow-rename off
       '';
