@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.mySystem.steam;
@@ -13,5 +14,9 @@ in {
       protontricks.enable = true;
       remotePlay.openFirewall = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      steamtinkerlaunch
+    ];
   };
 }
