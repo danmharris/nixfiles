@@ -10,17 +10,17 @@ in {
 
   config = lib.mkIf (cfg.enable) {
     home.packages = with pkgs; [
-      neovim
       nil
     ];
 
+    programs.nixvim =
+      import ./config {inherit pkgs lib config;}
+      // {
+        enable = true;
+      };
+
     home.sessionVariables = {
       EDITOR = "nvim";
-    };
-
-    xdg.configFile."nvim/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.myHome.nixfilesPath}/home/modules/nvim/config";
-      recursive = true;
     };
   };
 }

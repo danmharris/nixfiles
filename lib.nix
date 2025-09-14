@@ -20,6 +20,7 @@
 
           sharedModules = [
             inputs.catppuccin.homeModules.catppuccin
+            inputs.nixvim.homeModules.nixvim
             ./home/modules
           ];
 

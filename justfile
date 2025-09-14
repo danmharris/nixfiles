@@ -7,6 +7,9 @@ build:
 diff: build
   nvd diff /run/current-system result
 
+test:
+  sudo nixos-rebuild test --flake .
+
 build-iso:
   nix build .#nixosConfigurations.iso.config.system.build.isoImage
 
