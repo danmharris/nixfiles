@@ -26,10 +26,10 @@ in {
       ];
       environment = {
         LD_ENABLE_OIDC = "True";
-        OIDC_OP_AUTHORIZATION_ENDPOINT = "https://auth.cluster.dnhrrs.xyz/application/o/authorize/";
-        OIDC_OP_TOKEN_ENDPOINT = "https://auth.cluster.dnhrrs.xyz/application/o/token/";
-        OIDC_OP_USER_ENDPOINT = "https://auth.cluster.dnhrrs.xyz/application/o/userinfo/";
-        OIDC_OP_JWKS_ENDPOINT = "https://auth.cluster.dnhrrs.xyz/application/o/linkding/jwks/";
+        OIDC_OP_AUTHORIZATION_ENDPOINT = "https://authentik.dnhrrs.xyz/application/o/authorize/";
+        OIDC_OP_TOKEN_ENDPOINT = "https://authentik.dnhrrs.xyz/application/o/token/";
+        OIDC_OP_USER_ENDPOINT = "https://authentik.dnhrrs.xyz/application/o/userinfo/";
+        OIDC_OP_JWKS_ENDPOINT = "https://authentik.dnhrrs.xyz/application/o/linkding/jwks/";
         OIDC_RP_CLIENT_ID = "8Ys4YcM9Y428wzcHwDm5Ve884acZdUOkZgfdE4IG";
       };
       environmentFiles = [config.sops.secrets."app/linkding/env".path];
