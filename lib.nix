@@ -7,6 +7,7 @@
       inputs.home-manager.nixosModules.home-manager
       inputs.sops-nix.nixosModules.sops
       inputs.impermanence.nixosModules.impermanence
+      inputs.authentik-nix.nixosModules.default
       ./nixos/modules
       ./nixos/hosts/${hostname}
     ],

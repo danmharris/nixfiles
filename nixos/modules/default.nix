@@ -3,6 +3,7 @@
     ./_base
 
     ./acme
+    ./authentik
     ./caddy
     ./cryptroot
     ./glances
