@@ -13,6 +13,7 @@
     ./jellyfin
     ./linkding
     ./mealie
+    ./miniflux
     ./nas
     ./paperless
     ./podman

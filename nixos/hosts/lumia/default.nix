@@ -60,6 +60,7 @@
     paperless.enable = true;
     authentik.enable = true;
     mealie.enable = true;
+    miniflux.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
