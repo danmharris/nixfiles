@@ -12,6 +12,7 @@
     ./impermanence
     ./jellyfin
     ./linkding
+    ./mealie
     ./nas
     ./paperless
     ./podman
