@@ -33,6 +33,9 @@ in {
         OIDC_RP_CLIENT_ID = "8Ys4YcM9Y428wzcHwDm5Ve884acZdUOkZgfdE4IG";
       };
       environmentFiles = [config.sops.secrets."app/linkding/env".path];
+      extraOptions = [
+        "--dns=10.23.20.2"
+      ];
     };
 
     mySystem.caddy.enable = true;
