@@ -14,6 +14,11 @@
     steam.enable = true;
   };
 
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["dan"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
