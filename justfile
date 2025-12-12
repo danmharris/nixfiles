@@ -1,8 +1,8 @@
 default:
   just --list
 
-build:
-  nixos-rebuild build --flake .
+build host='':
+  nixos-rebuild build --flake .#{{host}}
 
 diff: build
   nvd diff /run/current-system result

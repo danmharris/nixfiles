@@ -13,8 +13,10 @@ in {
   config = lib.mkIf (cfg.enable) {
     programs.git = {
       enable = true;
-      userEmail = "danharris1606@gmail.com";
-      userName = "Dan Harris";
+      settings.user = {
+        email = "danharris1606@gmail.com";
+        name = "Dan Harris";
+      };
     };
   };
 }
