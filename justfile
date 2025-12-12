@@ -17,7 +17,7 @@ switch:
   sudo nixos-rebuild switch --flake .
 
 remote-switch host:
-  nixos-rebuild switch --target-host {{host}}.dnhrrs.xyz --build-host {{host}}.dnhrrs.xyz --use-remote-sudo --flake .#{{host}}
+  nixos-rebuild switch --target-host {{host}}.dnhrrs.xyz --build-host {{host}}.dnhrrs.xyz --sudo --ask-sudo-password --flake .#{{host}}
 
 sops-updatekeys:
   find -type f -name '*.sops.yml' -exec sops updatekeys {} \;
