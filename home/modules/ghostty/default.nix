@@ -12,7 +12,7 @@ in {
       enable = true;
       enableZshIntegration = true;
       settings = {
-        theme = "catppuccin-macchiato";
+        theme = "Catppuccin Macchiato";
         font-size = 12;
       };
     };
