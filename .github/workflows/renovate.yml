@@ -3,6 +3,7 @@ name: Renovate
 on:
   schedule:
     - cron: '0 2 * * *'
+  workflow_dispatch: {}
 env:
   RENOVATE_AUTODISCOVER: true
   RENOVATE_PLATFORM: github
