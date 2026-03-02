@@ -13,6 +13,7 @@ in {
       enableZshIntegration = true;
       settings = {
         theme = "Catppuccin Macchiato";
+        font-family = "JetBrainsMono NF";
         font-size = 12;
       };
     };
