@@ -6,3 +6,5 @@ c() {
     fi
     tmux new-session -A -c $dir -s $(basename $dir)
 }
+
+PS1='%F{cyan}%n@%m%f %F{blue}%B%~%f %(!.#.$)%b '

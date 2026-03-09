@@ -43,6 +43,7 @@ in {
         ignoreSpace = true;
         share = true;
       };
+      defaultKeymap = "emacs";
       initContent = builtins.readFile ./init-extra.zsh;
     };
 
