@@ -21,6 +21,11 @@
     shiftwidth = 2;
     tabstop = 2;
     autoindent = true;
+    hidden = true;
+    completeopt = ["menu" "menuone" "noselect"];
+    wildmenu = true;
+    wildmode = ["list:lastused" "full"];
+    foldlevel = 99;
   };
 
   colorschemes.catppuccin = {
@@ -71,6 +76,12 @@
   plugins.treesitter = {
     enable = true;
 
+    folding = true;
+    settings = {
+      highlight.enable = true;
+      indent.enable = true;
+    };
+
     grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
       bash
       json
@@ -84,7 +95,6 @@
     ];
   };
 
-  plugins.noice.enable = true;
   plugins.snacks.enable = true;
 
   plugins.conform-nvim = {
@@ -103,7 +113,12 @@
 
   plugins.gitsigns.enable = true;
 
-  plugins.neo-tree.enable = true;
+  plugins.nvim-tree = {
+    enable = true;
+    settings = {
+      update_focused_file.enable = true;
+    };
+  };
 
   keymaps = [
     {
@@ -167,26 +182,20 @@
       key = "<C-l>";
       action = "<C-w>l";
     }
-
     {
       mode = "n";
-      key = "<leader>bn";
+      key = "<A-n>";
       action = ":bn<CR>";
     }
     {
       mode = "n";
-      key = "<leader>bp";
+      key = "<A-p>";
       action = ":bp<CR>";
     }
     {
       mode = "n";
-      key = "<leader>bd";
-      action = ":bd<CR>";
-    }
-    {
-      mode = "n";
       key = "\\";
-      action = ":Neotree reveal toggle<CR>";
+      action = ":NvimTreeToggle<CR>";
     }
   ];
 }
