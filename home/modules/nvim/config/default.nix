@@ -112,6 +112,7 @@
   plugins.blink-cmp.enable = true;
 
   plugins.gitsigns.enable = true;
+  plugins.lazygit.enable = true;
 
   plugins.nvim-tree = {
     enable = true;
@@ -196,6 +197,11 @@
       mode = "n";
       key = "\\";
       action = ":NvimTreeToggle<CR>";
+    }
+    {
+      mode = "n";
+      key = "<leader>gg";
+      action = ":LazyGit<CR>";
     }
   ];
 }
