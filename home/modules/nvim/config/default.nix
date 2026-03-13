@@ -92,6 +92,7 @@
       regex
       lua
       markdown_inline
+      ruby
     ];
   };
 
