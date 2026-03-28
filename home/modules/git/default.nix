@@ -18,5 +18,10 @@ in {
         name = "Dan Harris";
       };
     };
+
+    programs.difftastic = {
+      enable = true;
+      git.enable = true;
+    };
   };
 }
