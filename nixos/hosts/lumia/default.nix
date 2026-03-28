@@ -56,7 +56,7 @@
     restic.enable = true;
     impermanence.enable = true;
     cryptroot.enable = true;
-    unifi.enable = true;
+    unifi.enable = false;
     paperless.enable = true;
     authentik.enable = true;
     mealie.enable = true;
