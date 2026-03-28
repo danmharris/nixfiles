@@ -18,7 +18,7 @@ in {
 
     mySystem.podman.enable = true;
     virtualisation.oci-containers.containers.linkding = {
-      image = "sissbruecker/linkding:1.39.1";
+      image = "sissbruecker/linkding:1.45.0";
       user = "917:917";
       ports = ["127.0.0.1:9090:9090"];
       volumes = [
