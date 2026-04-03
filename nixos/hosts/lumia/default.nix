@@ -22,6 +22,10 @@
     };
   };
 
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
+  };
+
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
