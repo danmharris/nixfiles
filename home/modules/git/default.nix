@@ -14,7 +14,7 @@ in {
     programs.git = {
       enable = true;
       settings.user = {
-        email = "danharris1606@gmail.com";
+        email = "me@danmharris.com";
         name = "Dan Harris";
       };
     };
