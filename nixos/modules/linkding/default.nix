@@ -34,7 +34,7 @@ in {
       };
       environmentFiles = [config.sops.secrets."app/linkding/env".path];
       extraOptions = [
-        "--dns=10.23.20.2"
+        "--dns=10.23.10.1"
       ];
     };
 
