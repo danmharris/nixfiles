@@ -50,7 +50,6 @@ parted /dev/nvme0n1
 
 Then follow the steps on the [Btrfs wiki page](https://nixos.wiki/wiki/Btrfs) for
 creating and mounting the subvolumes.
-```
 
 Generate the new hardware configuration:
 
