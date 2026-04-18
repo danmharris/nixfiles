@@ -22,5 +22,6 @@
     ./restic
     ./steam
     ./unifi
+    ./vikunja
   ];
 }
