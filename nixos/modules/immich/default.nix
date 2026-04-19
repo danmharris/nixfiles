@@ -13,6 +13,7 @@ in {
       port = 2283;
       host = "localhost";
       mediaLocation = "/var/lib/immich";
+      database.enableVectors = false;
     };
 
     mySystem.caddy.enable = true;
