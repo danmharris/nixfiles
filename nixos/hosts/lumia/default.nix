@@ -50,6 +50,7 @@
     mealie.enable = true;
     miniflux.enable = true;
     vikunja.enable = true;
+    prometheus.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

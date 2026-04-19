@@ -20,7 +20,7 @@ in {
     virtualisation.oci-containers.containers.linkding = {
       image = "sissbruecker/linkding:1.45.0";
       user = "917:917";
-      ports = ["127.0.0.1:9090:9090"];
+      ports = ["127.0.0.1:9091:9090"];
       volumes = [
         "/var/lib/linkding:/etc/linkding/data:rw"
       ];
@@ -42,7 +42,7 @@ in {
     services.caddy.virtualHosts."linkding.dnhrrs.xyz" = {
       useACMEHost = "dnhrrs.xyz";
       extraConfig = ''
-        reverse_proxy http://127.0.0.1:9090
+        reverse_proxy http://127.0.0.1:9091
       '';
     };
 

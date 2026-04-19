@@ -19,6 +19,7 @@
     ./podman
     ./postgresql
     ./printing
+    ./prometheus
     ./restic
     ./steam
     ./unifi
