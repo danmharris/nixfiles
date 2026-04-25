@@ -8,6 +8,7 @@
     ./cryptroot
     ./glances
     ./gnome
+    ./grafana
     ./immich
     ./impermanence
     ./jellyfin
