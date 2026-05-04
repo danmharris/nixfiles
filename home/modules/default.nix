@@ -10,6 +10,7 @@
     ./ghostty
     ./git
     ./gpg
+    ./jj
     ./nvim
     ./tmux
     ./zsh

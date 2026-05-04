@@ -21,6 +21,7 @@
     ghostty.enable = true;
     git.enable = true;
     gpg.enable = true;
+    jj.enable = true;
     nvim.enable = true;
     tmux.enable = true;
     zsh.enable = true;
