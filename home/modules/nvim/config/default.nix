@@ -28,6 +28,8 @@
     foldlevel = 99;
   };
 
+  diagnostic.settings.virtual_text = true;
+
   colorschemes.catppuccin = {
     enable = true;
     settings.flavour = "macchiato";
