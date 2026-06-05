@@ -19,6 +19,16 @@
         matchConfig.Name = "enp2s0";
         networkConfig.DHCP = true;
       };
+
+      "20-enp1s0" = {
+        matchConfig.Name = "enp1s0";
+        linkConfig.RequiredForOnline = "no";
+      };
+
+      "30-wlp3s0" = {
+        matchConfig.Name = "wlp3s0";
+        linkConfig.RequiredForOnline = "no";
+      };
     };
   };
 
