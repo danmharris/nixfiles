@@ -27,11 +27,28 @@ in {
         ];
 
         script = ''
-          mkdir -p /btrfs_tmp
-          mount /dev/mapper/cryptroot -o user_subvol_rm_allowed /btrfs_tmp
-          btrfs subvolume delete -R /btrfs_tmp/root
-          btrfs subvolume create /btrfs_tmp/root
-          umount /btrfs_tmp
+          MOUNTDIR=/btrfs_tmp
+
+          echo 'Mount'
+          mkdir -p $MOUNTDIR
+          mount /dev/mapper/cryptroot -o user_subvol_rm_allowed $MOUNTDIR
+
+          echo 'Moving root subvolume'
+          mkdir -p $MOUNTDIR/previous_roots
+          timestamp=$(date --date=@$(stat -c %Y $MOUNTDIR/root) "+%Y%m%d%H%M%S")
+          mv $MOUNTDIR/root $MOUNTDIR/previous_roots/$timestamp
+
+          echo 'Removing previous subvolumes'
+          for previous_subvolume in $(find $MOUNTDIR/old_roots/ -mindepth 1 -maxdepth 1 -mtime +30); do
+            echo "Removing $previous_subvolume"
+            btrfs subvolume delete -R "$previous_subvolume"
+          done
+
+          echo 'Create new subvolume'
+          btrfs subvolume create $MOUNTDIR/root
+          umount $MOUNTDIR
+
+          echo 'Continue boot'
         '';
       };
     };
