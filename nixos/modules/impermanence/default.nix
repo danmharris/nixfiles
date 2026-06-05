@@ -28,8 +28,8 @@ in {
 
         script = ''
           mkdir -p /btrfs_tmp
-          mount /dev/mapper/cryptroot /btrfs_tmp
-          btrfs subvolume delete /btrfs_tmp/root
+          mount /dev/mapper/cryptroot -o user_subvol_rm_allowed /btrfs_tmp
+          btrfs subvolume delete -R /btrfs_tmp/root
           btrfs subvolume create /btrfs_tmp/root
           umount /btrfs_tmp
         '';
