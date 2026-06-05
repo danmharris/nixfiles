@@ -18,7 +18,7 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/1db86dd7-21ee-4780-8b2f-f8d50beee2cb";
+    device = "/dev/mapper/cryptroot";
     fsType = "btrfs";
     options = ["subvol=root" "compress=zstd"];
   };

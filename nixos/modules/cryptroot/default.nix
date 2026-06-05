@@ -14,8 +14,7 @@ in {
       ssh = {
         enable = true;
         port = 2222;
-        shell = "/bin/cryptsetup-askpass";
-        authorizedKeys = config.users.users.dan.openssh.authorizedKeys.keys;
+        authorizedKeys = builtins.map (k: ''command="systemctl default" ${k}'') config.users.users.dan.openssh.authorizedKeys.keys;
         hostKeys = ["/persist/initrd/ssh_host_ed25519_key"];
       };
     };

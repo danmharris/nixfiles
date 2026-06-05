@@ -3,11 +3,11 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    catppuccin.url = "github:catppuccin/nix/release-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    catppuccin.url = "github:catppuccin/nix/release-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
@@ -16,7 +16,7 @@
     };
     impermanence.url = "github:nix-community/impermanence";
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.11";
+      url = "github:nix-community/nixvim/nixos-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     authentik-nix.url = "github:nix-community/authentik-nix";

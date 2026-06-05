@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  utils,
   ...
 }: let
   cfg = config.mySystem.impermanence;
@@ -12,13 +13,28 @@ in {
 
     sops.age.sshKeyPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
 
-    boot.initrd.postResumeCommands = lib.mkAfter ''
-      mkdir -p /btrfs_tmp
-      mount /dev/mapper/cryptroot /btrfs_tmp
-      btrfs subvolume delete /btrfs_tmp/root
-      btrfs subvolume create /btrfs_tmp/root
-      umount /btrfs_tmp
-    '';
+    boot.initrd.systemd = {
+      services.wipe-btrfs = {
+        unitConfig.DefaultDependencies = false;
+        serviceConfig.Type = "oneshot";
+        requiredBy = ["initrd.target"];
+        before = ["sysroot.mount"];
+
+        requires = ["${utils.escapeSystemdPath "/dev/mapper/cryptroot"}.device"];
+        after = [
+          "${utils.escapeSystemdPath "/dev/mapper/cryptroot"}.device"
+          "local-fs-pre.target"
+        ];
+
+        script = ''
+          mkdir -p /btrfs_tmp
+          mount /dev/mapper/cryptroot /btrfs_tmp
+          btrfs subvolume delete /btrfs_tmp/root
+          btrfs subvolume create /btrfs_tmp/root
+          umount /btrfs_tmp
+        '';
+      };
+    };
 
     environment.persistence."/persist" = {
       hideMounts = true;
