@@ -19,6 +19,10 @@
       url = "github:nix-community/nixvim/nixos-26.05";
     };
     authentik-nix.url = "github:nix-community/authentik-nix";
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {

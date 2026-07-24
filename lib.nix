@@ -8,6 +8,7 @@
       inputs.sops-nix.nixosModules.sops
       inputs.impermanence.nixosModules.impermanence
       inputs.authentik-nix.nixosModules.default
+      inputs.disko.nixosModules.disko
       ./nixos/modules
       ./nixos/hosts/${hostname}
     ],
