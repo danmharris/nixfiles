@@ -5,6 +5,7 @@ keys:
   - &guava age1xuwlyavt70tt7rc0ufrwh7h907ymvg5mt7amxy0pygafmtm7eses2yj69x
   - &lumia age1ued9ufgfwkrx00n3vmneae6grex4r0nuuytnwdk63u62flga4u5s9kd20j
   - &pomelo age1fsd8gpknmdtffnkq8an32zut24gf3h2vmglpaellh0j8fymrefvq25cjc5
+  - &koji age122l7j4w7eyrd2gra4ft2jyndh4ec7j83s637e0fz7dhe45m369ds99tz44
 creation_rules:
   - path_regex: .*\.sops\.ya?ml$
     key_groups:
@@ -14,3 +15,4 @@ creation_rules:
           - *guava
           - *lumia
           - *pomelo
+          - *koji

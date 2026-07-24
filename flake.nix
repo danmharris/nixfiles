@@ -76,6 +76,10 @@
           lumia = lib.mkNixosConfig {
             hostname = "lumia";
           };
+
+          koji = lib.mkNixosConfig {
+            hostname = "koji";
+          };
         };
       };
     };
