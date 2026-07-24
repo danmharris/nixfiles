@@ -1,6 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
-    spotify
     libreoffice
     hunspell
     hunspellDicts.en_GB-ise
@@ -14,10 +17,12 @@
     nix-direnv.enable = true;
   };
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+  };
 
   myHome = {
-    alacritty.enable = true;
     ghostty.enable = true;
     git.enable = true;
     gpg.enable = true;
@@ -28,12 +33,4 @@
   };
 
   programs.ssh.enable = true;
-  programs.ssh.matchBlocks.cisco = {
-    host = "switch0.dnhrrs.xyz";
-    user = "cisco";
-    extraOptions = {
-      KexAlgorithms = "+diffie-hellman-group-exchange-sha1";
-      HostKeyAlgorithms = "+ssh-rsa";
-    };
-  };
 }

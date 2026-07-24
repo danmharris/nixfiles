@@ -17,7 +17,6 @@
     impermanence.url = "github:nix-community/impermanence";
     nixvim = {
       url = "github:nix-community/nixvim/nixos-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     authentik-nix.url = "github:nix-community/authentik-nix";
   };
