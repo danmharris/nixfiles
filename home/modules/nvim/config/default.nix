@@ -76,7 +76,7 @@
   plugins.web-devicons.enable = true;
 
   plugins.treesitter = {
-    enable = true;
+    enable = false;
 
     folding.enable = true;
     settings = {
