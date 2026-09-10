@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs-unstable,
   ...
 }: let
   cfg = config.mySystem.immich;
@@ -10,6 +11,7 @@ in {
   config = lib.mkIf (cfg.enable) {
     services.immich = {
       enable = true;
+      package = pkgs-unstable.immich;
       port = 2283;
       host = "localhost";
       mediaLocation = "/var/lib/immich";
