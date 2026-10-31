@@ -4,7 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/191e87d6a88658d67b3c5c5a22762ced3e7d65aa";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/adaf91259b13e589eb746383f3e097417df091a6";
     catppuccin.url = "github:catppuccin/nix/release-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
