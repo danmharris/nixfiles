@@ -13,12 +13,13 @@
       ./nixos/hosts/${hostname}
     ],
   }: let
+    pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
     mkHomes = [
       {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit inputs hostname;};
+          extraSpecialArgs = {inherit inputs hostname pkgs-unstable;};
 
           sharedModules = [
             inputs.catppuccin.homeModules.catppuccin
@@ -32,7 +33,6 @@
         };
       }
     ];
-    pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
   in
     inputs.nixpkgs.lib.nixosSystem {
       modules = baseModules ++ modules ++ mkHomes;
