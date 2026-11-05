@@ -9,6 +9,11 @@ in {
   options.mySystem.immich.enable = lib.mkEnableOption "immich";
 
   config = lib.mkIf (cfg.enable) {
+    mySystem.nas.mounts.photos = {
+      enable = true;
+      groupExtraUsers = [config.services.immich.user];
+    };
+
     services.immich = {
       enable = true;
       package = pkgs-unstable.immich;
