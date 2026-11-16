@@ -47,7 +47,7 @@
 
   mySystem = {
     acme.enable = true;
-    glances.enable = true;
+    glances.enable = false; # reenable with 26.11
     immich.enable = true;
     jellyfin.enable = true;
     linkding.enable = true;
