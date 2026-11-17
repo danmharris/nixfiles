@@ -1,9 +1,10 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   mySystem = {
     gnome.enable = true;
     printing.enable = true;
