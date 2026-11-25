@@ -23,6 +23,7 @@
     ./prometheus
     ./restic
     ./sabnzbd
+    ./sonarr
     ./steam
     ./unifi
     ./vikunja

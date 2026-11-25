@@ -63,6 +63,7 @@
     prometheus.enable = true;
     grafana.enable = true;
     sabnzbd.enable = true;
+    sonarr.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
