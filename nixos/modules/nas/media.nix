@@ -6,7 +6,7 @@
   cfg = config.mySystem.nas.mounts.media;
 in {
   options.mySystem.nas.mounts.media = {
-    enable = lib.mkEnableOption "tv and movies share";
+    enable = lib.mkEnableOption "media share";
     groupExtraUsers = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [];
@@ -20,13 +20,8 @@ in {
     };
 
     fileSystems = {
-      "/mnt/media/movies" = {
-        device = "nas.dnhrrs.xyz:/volume1/Movies";
-        fsType = "nfs";
-      };
-
-      "/mnt/media/tv" = {
-        device = "nas.dnhrrs.xyz:/volume1/TV Shows";
+      "/mnt/media" = {
+        device = "nas.dnhrrs.xyz:/volume1/media";
         fsType = "nfs";
       };
     };
