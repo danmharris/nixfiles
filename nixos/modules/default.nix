@@ -22,6 +22,7 @@
     ./printing
     ./prometheus
     ./restic
+    ./sabnzbd
     ./steam
     ./unifi
     ./vikunja
