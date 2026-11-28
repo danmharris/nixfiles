@@ -21,6 +21,7 @@
     ./postgresql
     ./printing
     ./prometheus
+    ./radarr
     ./restic
     ./sabnzbd
     ./sonarr
